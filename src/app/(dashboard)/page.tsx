@@ -1,18 +1,17 @@
-'use client';
+"use client";
 
-import { Button } from "@mui/material";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { AustraliaMap } from "./_components/map";
+import { useState } from "react";
 
 const DashBoardPage = () => {
   const session = useSession();
-  console.log(session);
-  
+  const [state, setState] = useState<string>("");
+
   return (
     <div>
-      <Link href="/signin">
-        <Button>sign in</Button>
-      </Link>
+      <p>{state}</p>
+      <AustraliaMap onSelectState={setState} selectedState={state} />
     </div>
   );
 };
