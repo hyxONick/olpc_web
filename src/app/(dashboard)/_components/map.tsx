@@ -16,16 +16,19 @@ export const AustraliaMap: FC<AustralizMapProps> = (props) => {
   };
 
   useEffect(() => {
+    const width = window.innerWidth / 3;
+    const height = window.innerWidth / 3;
+
     const svg = d3
       .select(svgRef.current)
-      .attr("width", 400)
-      .attr("height", 400);
+      .attr("width", width)
+      .attr("height", height);
 
     const projection = d3
       .geoEquirectangular()
       .scale(400)
       .center([132.08, -23.07])
-      .translate([200, 200]);
+      .translate([width / 2, height / 2]);
 
     const pathGenerator = d3.geoPath().projection(projection);
 
@@ -41,14 +44,15 @@ export const AustraliaMap: FC<AustralizMapProps> = (props) => {
         .attr("stroke", "white")
         .on("click", function (d, i: any) {
           onSelectState(i.properties.STATE_NAME);
-        });
+        })
+        .append("text");
     });
   }, []);
 
   useEffect(() => {
     if (!selectedState) return;
 
-    const id = `#${generateStateId(selectedState)}`
+    const id = `#${generateStateId(selectedState)}`;
     d3.selectAll("path").attr("fill", "lightblue");
     d3.select(id).attr("fill", "orange");
   }, [selectedState]);
