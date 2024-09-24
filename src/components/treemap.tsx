@@ -70,10 +70,8 @@ export const Treemap = ({ width, height, data }: TreemapProps) => {
   });
 
   return (
-    <div>
-      <svg width={width} height={height}>
-        {allShapes}
-      </svg>
-    </div>
+    <svg width={width} height={height}>
+      {allShapes}
+    </svg>
   );
 };
