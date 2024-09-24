@@ -8,10 +8,13 @@ import { Button } from "@/components/ui/button";
 const links = [
   { name: "Home", href: "/" },
   {
-    name: "Invoices",
-    href: "/invoices",
+    name: "App Usage (School)",
+    href: "/app-usage-school",
   },
-  { name: "Customers", href: "/customers" },
+  {
+    name: "App Usage (Location)",
+    href: "/app-usage-location",
+  },
 ];
 
 export default function NavLinks() {
@@ -20,7 +23,7 @@ export default function NavLinks() {
   return (
     <Fragment>
       {links.map((link) => (
-        <Link key={link.name} href="/">
+        <Link key={link.name} href={link.href}>
           <Button
             variant={pathname === link.href ? "secondary" : "ghost"}
             className="w-full flex justify-start"
