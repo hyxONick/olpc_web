@@ -1,7 +1,7 @@
 "use client";
 
 import { AustraliaMap } from "./_components/map";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DataTable } from "@/components/dataTable";
 import { Separator } from "@/components/ui/separator";
 import { installation } from "@/mock/installation";
@@ -29,7 +29,9 @@ const DashBoardPage = () => {
 
   return (
     <div className="w-full h-full flex">
-      <AustraliaMap onSelectState={setState} selectedState={state} />
+      <div className="w-1/2">
+        <AustraliaMap onSelectState={setState} selectedState={state} />
+      </div>
 
       <div className="flex-1 flex flex-col ">
         <div className="w-full h-1/2">
@@ -48,11 +50,7 @@ const DashBoardPage = () => {
 
         <Separator className="my-4" />
 
-        <Tabs
-          defaultValue="usage"
-          className="flex-1 p-3 overflow-hidden"
-          ref={contentRef}
-        >
+        <Tabs defaultValue="usage" ref={contentRef}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="usage">{usage}</TabsTrigger>
             <TabsTrigger value="contribution">{contribution}</TabsTrigger>
