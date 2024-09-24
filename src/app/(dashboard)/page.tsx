@@ -1,7 +1,7 @@
 "use client";
 
 import { AustraliaMap } from "./_components/map";
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { DataTable } from "@/components/dataTable";
 import { Separator } from "@/components/ui/separator";
 import { installation } from "@/mock/installation";
@@ -15,7 +15,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const DashBoardPage = () => {
   const [state, setState] = useState<string>("");
   const contentRef = useRef<HTMLDivElement>(null);
-  const size = useSize(contentRef);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const width = contentRef.current.clientWidth;
+    const height = contentRef.current.clientHeight;
+    setSize({ width, height });
+  }, [contentRef]);
 
   const usage = "Top 10 usage";
   const contribution = "Top 10 contribution of developers";
@@ -41,7 +48,11 @@ const DashBoardPage = () => {
 
         <Separator className="my-4" />
 
-        <Tabs defaultValue="usage" className="flex-1 p-3" ref={contentRef}>
+        <Tabs
+          defaultValue="usage"
+          className="flex-1 p-3 overflow-hidden"
+          ref={contentRef}
+        >
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="usage">{usage}</TabsTrigger>
             <TabsTrigger value="contribution">{contribution}</TabsTrigger>
@@ -52,11 +63,7 @@ const DashBoardPage = () => {
           </TabsContent>
 
           <TabsContent value="contribution">
-            <Treemap
-              data={treeData}
-              width={size?.width || 0}
-              height={size?.height || 0}
-            />
+            <Treemap data={treeData} width={size.width} height={size.height} />
           </TabsContent>
         </Tabs>
       </div>
