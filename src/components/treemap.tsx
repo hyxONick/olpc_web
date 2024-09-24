@@ -41,7 +41,7 @@ export const Treemap = ({ width, height, data }: TreemapProps) => {
           height={leaf.y1 - leaf.y0}
           stroke="transparent"
           fill={"#69b3a2"}
-          className={"opacity-80 hover:opacity-100"}
+          style={{ opacity: leaf.data.value / 100 }}
         />
         <text
           x={leaf.x0 + 3}
@@ -49,7 +49,7 @@ export const Treemap = ({ width, height, data }: TreemapProps) => {
           fontSize={12}
           textAnchor="start"
           alignmentBaseline="hanging"
-          fill="white"
+          // fill="white"
           className="font-bold"
         >
           {leaf.data.name}
@@ -60,7 +60,7 @@ export const Treemap = ({ width, height, data }: TreemapProps) => {
           fontSize={12}
           textAnchor="start"
           alignmentBaseline="hanging"
-          fill="white"
+          // fill="white"
           className="font-light"
         >
           {leaf.data.value}
