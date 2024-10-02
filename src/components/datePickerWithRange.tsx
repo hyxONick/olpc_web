@@ -13,10 +13,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
+import { FC } from "react";
 
-export const DatePickerWithRange = ({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) => {
+interface DataPickerWithRangeProps {
+  className?: React.HTMLAttributes<HTMLDivElement>;
+  label?: string;
+}
+
+export const DatePickerWithRange: FC<DataPickerWithRangeProps> = (props) => {
+  const { className, label = "Pick a date" } = props;
   const [date, setDate] = React.useState<DateRange | undefined>(undefined);
 
   return (
@@ -42,7 +47,7 @@ export const DatePickerWithRange = ({
                 format(date.from, "LLL dd, y")
               )
             ) : (
-              <span>Pick a date</span>
+              <span>{label}</span>
             )}
           </Button>
         </PopoverTrigger>

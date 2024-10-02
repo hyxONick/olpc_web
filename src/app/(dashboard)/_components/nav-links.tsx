@@ -15,6 +15,14 @@ const links = [
     name: "App Usage (Location)",
     href: "/app-usage-location",
   },
+  {
+    name: "App Usage (Duration)",
+    href: "/app-usage-duration",
+  },
+  {
+    name: "App Usage (Category)",
+    href: "/app-usage-category",
+  },
 ];
 
 export default function NavLinks() {

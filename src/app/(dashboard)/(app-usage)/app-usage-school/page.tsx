@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import { Selection } from "@/components/selection";
 import { Button } from "@/components/ui/button";
 import { BarChart } from "@mui/x-charts/BarChart";
@@ -11,7 +11,7 @@ import { installation } from "@/mock/installation";
 
 const page = () => {
   return (
-    <div className="w-full h-full flex">
+    <Fragment>
       <div className="w-1/2 flex flex-col justify-around">
         <div className="flex flex-col gap-3 h-1/2 w-1/2">
           <Selection options={states} label="State&nbsp;&nbsp;&nbsp;" />
@@ -62,7 +62,7 @@ const page = () => {
           />
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

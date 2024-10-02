@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { DataTable } from "@/components/dataTable";
 import { Separator } from "@/components/ui/separator";
 import { installation } from "@/mock/installation";
-import { useSize } from "ahooks";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { categoryColumns, categoryData } from "@/mock/category";
 import { Treemap } from "@/components/treemap";

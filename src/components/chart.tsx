@@ -1,13 +1,13 @@
 "use client";
 
-import { FC, forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import Chart, { ChartConfiguration } from "chart.js/auto";
 
-interface BarchartProps extends CanvasRenderingContext2DSettings {
+interface ChartProps extends CanvasRenderingContext2DSettings {
   config: ChartConfiguration;
 }
 
-export const ChartComponent = forwardRef((props: BarchartProps, ref) => {
+export const ChartComponent = forwardRef((props: ChartProps, ref) => {
   const { config, ...rest } = props;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);

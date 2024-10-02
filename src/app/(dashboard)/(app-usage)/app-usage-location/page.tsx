@@ -1,7 +1,7 @@
 "use client";
 
 import { Selection } from "@/components/selection";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,8 +13,8 @@ import { states } from "@/mock/states";
 import { BarChart, DefaultizedPieValueType } from "@mui/x-charts";
 import { installation } from "@/mock/installation";
 import { Button } from "@/components/ui/button";
-import { DatePickerWithRange } from "@/components/time-span";
 import { Separator } from "@/components/ui/separator";
+import { DatePickerWithRange } from "@/components/datePickerWithRange";
 
 const page = () => {
   const [state, setState] = useState<string>("");
@@ -24,7 +24,7 @@ const page = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <Fragment>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -118,7 +118,7 @@ const page = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
