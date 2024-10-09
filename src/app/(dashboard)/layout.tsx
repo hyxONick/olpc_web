@@ -1,4 +1,4 @@
-import SideNav from "../_components/side-nav";
+import SideNav from "./_components/side-nav";
 
 const DashBoardLayout = async (props: { children: React.ReactNode }) => {
   const { children } = props;

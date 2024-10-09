@@ -26,7 +26,15 @@ const DashBoardPage = () => {
       endDate: "",
       groupByApp: true,
     }),
-  }).then(console.log);
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
 
   useEffect(() => {
     if (!contentRef.current) return;
