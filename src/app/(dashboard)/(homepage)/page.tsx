@@ -1,18 +1,15 @@
 "use client";
 
-import { AustraliaMap } from "./_components/map";
 import { useEffect, useRef, useState } from "react";
-import { DataTable } from "@/components/dataTable";
 import { Separator } from "@/components/ui/separator";
-import { installation } from "@/mock/installation";
-import { BarChart } from "@mui/x-charts/BarChart";
-import { categoryColumns, categoryData } from "@/mock/category";
-import { Treemap } from "@/components/treemap";
-import { treeData } from "@/mock/tree";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { HomepageMock } from "@/mock/homepage";
+import { CategoryList } from "./_components/category-list";
+import { ContributionTree } from "./_components/contribution-tree";
+import { InstallationBar } from "./_components/installation-bar";
+import { MapInfo } from "./_components/map-info";
 
 const DashBoardPage = () => {
-  const [state, setState] = useState<string>("");
   const contentRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
@@ -27,24 +24,14 @@ const DashBoardPage = () => {
   const contribution = "Top 10 contribution of developers";
 
   return (
-    <div className="w-full h-full flex">
-      <div className="w-1/2">
-        <AustraliaMap onSelectState={setState} selectedState={state} />
+    <div className="w-full h-full flex flex-col">
+      <div className="w-full flex justify-center">
+        <MapInfo data={HomepageMock.StateInfo} />
       </div>
 
       <div className="flex-1 flex flex-col ">
-        <div className="w-full h-1/2">
-          <BarChart
-            xAxis={[
-              {
-                scaleType: "band",
-                data: installation.xAxis,
-                label: "App usage",
-              },
-            ]}
-            yAxis={[{ label: "Installation" }]}
-            series={[{ data: installation.values }]}
-          />
+        <div className="w-full h-full">
+          <InstallationBar data={HomepageMock.Installation} />
         </div>
 
         <Separator className="my-4" />
@@ -56,14 +43,22 @@ const DashBoardPage = () => {
           </TabsList>
 
           <TabsContent value="usage">
-            <DataTable columns={categoryColumns} data={categoryData} />
+            <CategoryList data={HomepageMock.Category} />
           </TabsContent>
 
           <TabsContent value="contribution">
-            <Treemap data={treeData} width={size.width} height={size.height} />
+            <ContributionTree
+              data={HomepageMock.Contribution}
+              size={{
+                width: size.width,
+                height: size.height,
+              }}
+            />
           </TabsContent>
         </Tabs>
       </div>
+
+      <Separator className="my-4" />
     </div>
   );
 };

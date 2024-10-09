@@ -49,7 +49,6 @@ export const Treemap = ({ width, height, data }: TreemapProps) => {
           fontSize={12}
           textAnchor="start"
           alignmentBaseline="hanging"
-          // fill="white"
           className="font-bold"
         >
           {leaf.data.name}
