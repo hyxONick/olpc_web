@@ -13,6 +13,21 @@ const DashBoardPage = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
+  fetch("https://olpc-dashboard.uc.r.appspot.com/app_usage/category", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      filter: "duration",
+      state: "",
+      geolocationType: "",
+      startDate: "",
+      endDate: "",
+      groupByApp: true,
+    }),
+  }).then(console.log);
+
   useEffect(() => {
     if (!contentRef.current) return;
     const width = contentRef.current.clientWidth;
