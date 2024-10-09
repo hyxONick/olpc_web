@@ -20,10 +20,6 @@ const DashBoardPage = () => {
     },
     body: JSON.stringify({
       filter: "duration",
-      state: "",
-      geolocationType: "",
-      startDate: "",
-      endDate: "",
       groupByApp: true,
     }),
   })
