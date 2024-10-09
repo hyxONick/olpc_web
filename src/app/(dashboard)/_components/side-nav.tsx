@@ -7,10 +7,11 @@ export default function SideNav() {
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2 shadow">
       <Link
-        className="mb-2 flex h-20 items-center justify-start rounded-md bg-accent p-4 md:h-40"
+        className="mb-2 flex items-start justify-center rounded-md bg-accent flex-col gap-3 pl-4"
         href="/"
       >
-        <Logo className="h-full" />
+        <Logo className="h-1/2" />
+        <p className="text-2xl font-bold">Skoolens</p>
       </Link>
 
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
