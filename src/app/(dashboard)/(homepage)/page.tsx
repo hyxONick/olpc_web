@@ -13,7 +13,7 @@ const DashBoardPage = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
 
-  fetch("https://olpc-dashboard.uc.r.appspot.com/app_usage/category", {
+  fetch("https://olpc-dashboard.uc.r.appspot.com/app_usage/category/", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
